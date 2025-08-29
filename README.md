@@ -1,4 +1,4 @@
-# TrackIt - Aplikasi Papan Kanban Kolaboratif  Kanban 🚀
+# TrackIt - Aplikasi Papan Kanban Kolaboratif 🚀
 
 **TrackIt** adalah aplikasi web *full-stack* modern yang dirancang untuk manajemen proyek dan tugas. Aplikasi ini menyediakan papan Kanban interaktif di mana pengguna dapat mengelola alur kerja mereka secara visual, memindahkan tugas antar status, dan melihat pembaruan dari kolaborator lain secara *real-time*.
 
@@ -26,28 +26,28 @@ Proyek ini dibangun menggunakan tumpukan teknologi modern dengan **.NET 8** seba
 
 ---
 
-## 🛠️ Tumpukan Teknologi
+## 🛠️ Tumpukan Teknologi & Library
 
 <details>
-<summary><strong>Klik untuk melihat detail teknologi</strong></summary>
+<summary><strong>Klik untuk melihat detail teknologi dan library yang diinstal</strong></summary>
 
-### **Backend**
-- **Framework**: **.NET 8 LTS** (ASP.NET Core Web API)
-- **Database**: **SQLite** dengan **Entity Framework Core 8**
-- **Otentikasi**: **ASP.NET Core Identity** dengan **JWT Bearer Tokens**
-- **Real-time**: **SignalR**
-- **Pola Desain**: **DTOs (Data Transfer Objects)** untuk API yang aman dan efisien.
+### **Backend (.NET 8 / NuGet Packages)**
+- **`Microsoft.EntityFrameworkCore.Sqlite`**: *Database provider* yang memungkinkan Entity Framework Core untuk berkomunikasi dengan database **SQLite**.
+- **`Microsoft.EntityFrameworkCore.Design`**: Menyediakan perintah *command-line* untuk EF Core (seperti `dotnet ef migrations add`).
+- **`Microsoft.AspNetCore.Identity.EntityFrameworkCore`**: Mengintegrasikan sistem **ASP.NET Core Identity** (untuk manajemen pengguna) dengan EF Core.
+- **`Microsoft.AspNetCore.Authentication.JwtBearer`**: *Middleware* untuk menerima dan memvalidasi **JSON Web Tokens (JWT)**.
+- **`Microsoft.AspNetCore.SignalR`**: *Framework* untuk menambahkan fungsionalitas **real-time** ke aplikasi.
 
-### **Frontend**
-- **Framework**: **React 18** dengan **TypeScript**
-- **Build Tool**: **Vite**
-- **UI Library**: **Material-UI (MUI)** untuk komponen yang indah dan konsisten.
-- **Routing**: **React Router Dom**
-- **Manajemen State**: **React Context API** untuk manajemen sesi pengguna.
-- **Komunikasi API**: **Axios** dengan *interceptors* untuk penanganan token otomatis.
-- **Drag-and-Drop**: **@dnd-kit**
-- **Real-time**: **@microsoft/signalr** Client
-- **Notifikasi**: **react-hot-toast**
+### **Frontend (React / npm Packages)**
+- **`axios`**: *Library* untuk membuat permintaan **HTTP** ke backend API.
+- **`react-router-dom`**: Mengelola **navigasi dan routing** di dalam aplikasi.
+- **`react-hot-toast`**: Untuk menampilkan **notifikasi** *pop-up* yang bersih.
+- **`jwt-decode`**: Alat bantu untuk **mendekode** token JWT di sisi frontend.
+- **`@dnd-kit/core`** & **`@dnd-kit/sortable`**: *Library* untuk fungsionalitas **drag-and-drop**.
+- **`@microsoft/signalr`**: *Client library* untuk terhubung dengan **SignalR Hub** di backend.
+- **`@mui/material`**, **`@emotion/react`**, **`@emotion/styled`**: Paket inti dari **Material-UI (MUI)**, menyediakan koleksi komponen UI siap pakai.
+- **`@mui/icons-material`**: Paket terpisah yang berisi koleksi **ikon** dari Material Design.
+- **`@mui/x-date-pickers`** & **`date-fns`**: Paket untuk menambahkan komponen **Date Picker** dari MUI.
 
 </details>
 
