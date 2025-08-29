@@ -15,6 +15,8 @@ namespace TrackIt.Api.Controllers
         // DTO for the create project request
         public record CreateProjectDto(string Name);
 
+        public record UpdateProjectDto(string Name);
+
         private readonly ApplicationDbContext _context;
 
         public ProjectsController(ApplicationDbContext context)
@@ -73,26 +75,22 @@ namespace TrackIt.Api.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateProject(int id, [FromBody] Project project)
+    public async Task<IActionResult> UpdateProject(int id, [FromBody] UpdateProjectDto projectDto)
+    {
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        var projectToUpdate = await _context.Projects
+            .FirstOrDefaultAsync(p => p.Id == id && p.UserId == userId);
+
+        if (projectToUpdate == null)
         {
-            if (id != project.Id)
-            {
-                return BadRequest("ID proyek tidak cocok.");
-            }
-
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var projectToUpdate = await _context.Projects.FirstOrDefaultAsync(p => p.Id == id && p.UserId == userId);
-
-            if (projectToUpdate == null)
-            {
-                return NotFound("Proyek tidak ditemukan atau Anda tidak memiliki izin.");
-            }
-
-            projectToUpdate.Name = project.Name;
-
-            await _context.SaveChangesAsync();
-            return NoContent();
+            return NotFound("Project not found or you do not have permission.");
         }
+
+        projectToUpdate.Name = projectDto.Name; // Ambil nama dari DTO
+
+        await _context.SaveChangesAsync();
+        return NoContent();
+    }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProject(int id)

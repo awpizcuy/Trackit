@@ -117,8 +117,8 @@
         "IsRequired": true
       },
       {
-        "Name": "project",
-        "Type": "TrackIt.Api.Models.Project",
+        "Name": "projectDto",
+        "Type": "TrackIt.Api.Controllers.ProjectsController\u002BUpdateProjectDto",
         "IsRequired": true
       }
     ],
